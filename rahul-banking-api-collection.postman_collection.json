@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "cee5f5cc-9c8d-437b-aa0e-bfa9f727c331",
+		"name": "rahul-banking-api-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36899258"
+	},
+	"item": [
+		{
+			"name": "Create Bank Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountHolderName\" : \"Shiv Sankar\",\r\n    \"accountHolderAddress\" : \"Kailash, China\",\r\n    \"accountHolderEmail\" : \"Shiv.Sankar@gmail.com\",\r\n    \"balance\" : 80000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rahulBankingApp/api/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rahulBankingApp",
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Details by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rahulBankingApp/api/accounts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rahulBankingApp",
+						"api",
+						"accounts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deposit amount to bank account",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"depositAmount\" : 10000 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rahulBankingApp/api/accounts/1/depositAmount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rahulBankingApp",
+						"api",
+						"accounts",
+						"1",
+						"depositAmount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw amount from bank accoun",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"withdrawalAmount\" : 10000 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rahulBankingApp/api/accounts/1/withdrawAmount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rahulBankingApp",
+						"api",
+						"accounts",
+						"1",
+						"withdrawAmount"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
