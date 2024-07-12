@@ -26,9 +26,46 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto getAccountById(Long id) {
-        Account account = accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Bank account does not exist in db"));
+        Account account = accountRepository
+                .findById(id)
+                .orElseThrow(
+                        () -> new RuntimeException("Bank account does not exist in db")
+                );
         AccountDto accountDto = AccountMapper.mapAccountJpaEntityToAccountDto(account);
         return accountDto;
+    }
+
+    @Override
+    public AccountDto depositAmount(Long id, double depositAmount) {
+        Account account = accountRepository
+                .findById(id)
+                .orElseThrow(
+                        () -> new RuntimeException("Bank account does not exist in db")
+                );
+        account.setBalance(account.getBalance() + depositAmount);
+        Account savedAccount =accountRepository.save(account);
+        AccountDto accountDto = AccountMapper.mapAccountJpaEntityToAccountDto(savedAccount);
+        return accountDto;
+    }
+
+    @Override
+    public AccountDto withdrawAmount(Long id, double withdrawalAmount) {
+        Account account = accountRepository
+                .findById(id)
+                .orElseThrow(
+                        () -> new RuntimeException("Bank account does not exist in db")
+                );
+
+        if(withdrawalAmount > account.getBalance())
+        {
+            throw new RuntimeException("Withdrawal amount is greater than account balance. Kindly enter accordingly");
+        }
+
+        account.setBalance(account.getBalance() - withdrawalAmount);
+        Account savedAccount =accountRepository.save(account);
+        AccountDto accountDto = AccountMapper.mapAccountJpaEntityToAccountDto(savedAccount);
+        return accountDto;
+
     }
 
 

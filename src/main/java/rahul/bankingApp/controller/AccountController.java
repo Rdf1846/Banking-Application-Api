@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import rahul.bankingApp.dto.AccountDto;
 import rahul.bankingApp.service.AccountService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
@@ -24,11 +26,29 @@ public class AccountController {
     }
 
     //get account rest api - to fetch account details based on id, if exist
-    @GetMapping({"/id"})
+    @GetMapping("/{id}")
     public ResponseEntity<AccountDto> getAccountById(@PathVariable Long id)
     {
         AccountDto accountDto = accountService.getAccountById(id);
         return ResponseEntity.ok(accountDto);
+    }
+
+    //deposit amount rest api
+    @PutMapping("/{id}/depositAmount")
+    public ResponseEntity<AccountDto> depositAmount(@PathVariable Long id,@RequestBody Map<String, Double> request)
+    {
+        double amountToDeposit = request.get("depositAmount");
+        AccountDto accountDto = accountService.depositAmount(id, amountToDeposit);
+        return  ResponseEntity.ok(accountDto);
+    }
+
+    //withdraw amount rest api
+    @PutMapping("/{id}/withdrawAmount")
+    public ResponseEntity<AccountDto> withdrawAmount(@PathVariable Long id,@RequestBody Map<String, Double> request)
+    {
+        double amountToWithdraw = request.get("withdrawalAmount");
+        AccountDto accountDto = accountService.withdrawAmount(id, amountToWithdraw);
+        return  ResponseEntity.ok(accountDto);
     }
 
 }
