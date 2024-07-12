@@ -59,6 +59,51 @@
 			"response": []
 		},
 		{
+			"name": "Delete account by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rahulBankingApp/api/accounts/1/deleteAccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rahulBankingApp",
+						"api",
+						"accounts",
+						"1",
+						"deleteAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch all accounts detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rahulBankingApp/api/accounts/getAllAccounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rahulBankingApp",
+						"api",
+						"accounts",
+						"getAllAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Deposit amount to bank account",
 			"request": {
 				"method": "PUT",
@@ -117,6 +162,38 @@
 						"accounts",
 						"1",
 						"withdrawAmount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update account holder name",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"updatedEmail\" : \"mummy2018@gmail.com\",\r\n    \"updatedPhoneNumber\" : \"+91-935461XXXX\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rahulBankingApp/api/accounts/2/updateDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rahulBankingApp",
+						"api",
+						"accounts",
+						"2",
+						"updateDetails"
 					]
 				}
 			},
