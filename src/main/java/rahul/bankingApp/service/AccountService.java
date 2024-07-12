@@ -2,6 +2,8 @@ package rahul.bankingApp.service;
 
 import rahul.bankingApp.dto.AccountDto;
 
+import java.util.List;
+
 public interface AccountService {
     AccountDto createAccount(AccountDto accountDTO);
 
@@ -10,4 +12,8 @@ public interface AccountService {
     AccountDto depositAmount(Long id, double depositAmount);
 
     AccountDto withdrawAmount(Long id, double withdrawalAmount);
+
+    List<AccountDto> getAllAccounts();
+
+    void deleteAccount(Long id);
 }

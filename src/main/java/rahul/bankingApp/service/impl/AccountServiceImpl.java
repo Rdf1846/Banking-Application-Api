@@ -7,6 +7,10 @@ import rahul.bankingApp.mapper.AccountMapper;
 import rahul.bankingApp.repository.AccountRepository;
 import rahul.bankingApp.service.AccountService;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AccountServiceImpl implements AccountService {
 
@@ -65,6 +69,26 @@ public class AccountServiceImpl implements AccountService {
         Account savedAccount =accountRepository.save(account);
         AccountDto accountDto = AccountMapper.mapAccountJpaEntityToAccountDto(savedAccount);
         return accountDto;
+
+    }
+
+    @Override
+    public List<AccountDto> getAllAccounts() {
+        List<Account> allEntityList = accountRepository.findAll();
+        List<AccountDto> allEntityDtoList = allEntityList.stream()
+                                            .map((account) ->  AccountMapper.mapAccountJpaEntityToAccountDto(account))
+                                            .collect(Collectors.toList());
+        return allEntityDtoList;
+    }
+
+    @Override
+    public void deleteAccount(Long id)
+    {
+        Account accountEntity = accountRepository
+                                .findById(id)
+                                .orElseThrow( () -> new RuntimeException("Account does not exist in database"));
+
+        accountRepository.deleteById(id);
 
     }
 
