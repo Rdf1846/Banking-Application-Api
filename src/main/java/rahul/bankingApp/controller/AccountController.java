@@ -69,5 +69,19 @@ public class AccountController {
         return ResponseEntity.ok("Account successfully deleted from db. Happy Banking :)");
     }
 
+    //update name,email,address and mobile phone in bank account rest api
+    @PutMapping("/{id}/updateDetails")
+    public ResponseEntity<AccountDto> updateName(@PathVariable Long id,@RequestBody Map<String, String> request)
+    {
+        String newName = request.get("updatedAccountHolderName");
+        String newEmail = request.get("updatedEmail");
+        String newAddress = request.get("updatedAddress");
+        String newPhone = request.get("updatedPhoneNumber");
+
+        AccountDto accountDto = accountService.updateDetails(id, newName, newEmail, newAddress, newPhone);
+        return ResponseEntity.ok(accountDto);
+
+    }
+
 
 }

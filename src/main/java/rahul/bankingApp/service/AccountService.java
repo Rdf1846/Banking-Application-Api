@@ -16,4 +16,6 @@ public interface AccountService {
     List<AccountDto> getAllAccounts();
 
     void deleteAccount(Long id);
+
+    AccountDto updateDetails(Long id, String newName, String newEmail, String newAddress, String newPhoneNumber);
 }

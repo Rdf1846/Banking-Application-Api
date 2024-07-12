@@ -10,6 +10,7 @@ public class AccountDto {
     private String accountHolderName;
     private String accountHolderAddress;
     private String accountHolderEmail;
+    private String phoneNumber;
     private double balance;
 
 }

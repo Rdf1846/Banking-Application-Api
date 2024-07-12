@@ -92,5 +92,31 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    @Override
+    public AccountDto updateDetails(Long id, String newName, String newEmail, String newAddress, String newPhoneNumber)
+    {
+        Account accountEntity = accountRepository
+                            .findById(id)
+                            .orElseThrow( () -> new RuntimeException("Account does not exist"));
+
+        if(newName != null) {
+            accountEntity.setAccountHolderName(newName);
+        }
+        if(newEmail != null) {
+            accountEntity.setAccountHolderEmail(newEmail);
+        }
+        if(newAddress != null) {
+            accountEntity.setAccountHolderAddress(newAddress);
+        }
+        if(newPhoneNumber != null) {
+            accountEntity.setPhoneNumber(newPhoneNumber);
+        }
+
+        Account savedAccount = accountRepository.save(accountEntity);
+        AccountDto accountDto = AccountMapper.mapAccountJpaEntityToAccountDto(savedAccount);
+
+        return accountDto;
+    }
+
 
 }
