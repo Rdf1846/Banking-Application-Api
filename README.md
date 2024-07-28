@@ -1,6 +1,6 @@
 # Banking Application 
 
-##Overview
+## Overview
  The Banking Application is a comprehensive system for managing bank accounts. In this project, we developed REST APIs for a straightforward banking application utilizing SpringBoot, Spring Data JPA (Hibernate), a MySQL database and secured with Okta authentication. The core functionalities include creating a bank account, deleting an account, retrieving account details, depositing funds, withdrawing funds, and more.
 
  ## API
